@@ -12,10 +12,17 @@ void main() {
 class MyGame extends BaseGame {
   final turret = SpriteComponent();
   final ship = SpriteComponent();
+  final background = SpriteComponent();
   final turretSpeed = 0.25;
   final shipSpeed = .5;
 
   Future<void> onLoad() async {
+    background
+      ..sprite = await loadSprite('star.jpg')
+      ..size = size
+      ..position = Vector2(0, 0);
+    add(background);
+
     turret
       ..sprite = await loadSprite('turret.png')
       ..size = Vector2(200, 200)
